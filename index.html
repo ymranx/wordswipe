@@ -6,12 +6,18 @@
     <title>Wordswipe</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="/css/wordswipe.build.css" rel="stylesheet">
 </head>
 
 <body>
 
+
+    <main id="main">
+        <app> </app>
+    </main>
+    <script src="/vendor/jquery/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+    <script src="/js/wordswipe.build.js"></script>
     <script>
         // Initialize Firebase
         var config = {
@@ -23,7 +29,6 @@
             messagingSenderId: "158562435000"
         };
         firebase.initializeApp(config);
-
     </script>
 </body>
 
