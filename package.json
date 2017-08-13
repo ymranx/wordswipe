@@ -1,0 +1,44 @@
+{
+  "name": "wordswipe",
+  "version": "1.0.0",
+  "description": "Wordsearch game in vue.js",
+  "main": "main.js",
+  "scripts": {
+    "dev": "webpack-dev-server  --colors --port 8080",
+    "devbuild": "webpack -p"
+  },
+  "keywords": [
+    "wordsearch",
+    "multiplayer"
+  ],
+  "author": "Imran Laskar",
+  "license": "MIT",
+  "dependencies": {
+    "vue": "^2.4.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.1.2",
+    "babel-loader": "^6.1.0",
+    "babel-plugin-transform-runtime": "^6.1.2",
+    "babel-preset-es2015": "^6.1.2",
+    "babel-preset-stage-0": "^6.1.2",
+    "babel-runtime": "^6.0.0",
+    "copy-webpack-plugin": "^4.0.1",
+    "css-loader": "^0.23.0",
+    "es6-promise": "^4.1.0",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "file-loader": "^0.9.0",
+    "less": "^2.7.2",
+    "less-loader": "^4.0.5",
+    "replace-in-file": "^2.3.2",
+    "script-loader": "^0.7.0",
+    "style-loader": "^0.13.0",
+    "url-loader": "^0.5.7",
+    "vue-hot-reload-api": "^2.1.0",
+    "vue-html-loader": "^1.0.0",
+    "vue-loader": "^8.7.0",
+    "vue-style-loader": "^3.0.1",
+    "webpack": "^2.4.1",
+    "webpack-dev-server": "^2.4.5"
+  }
+}
