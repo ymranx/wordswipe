@@ -5,7 +5,7 @@
     <ul class="app-grid list">
       <svg id='appIllustrations' version="1.1" xmlns="http://www.w3.org/2000/svg">
       </svg>
-      <li v-for="letter in letters" class="grid-letter"> {{letter}}</li>
+      <li v-for="(letter, idx) in letters" class="grid-letter"> {{letter}}</li>
     </ul>
   
     <ul class="app-words list">

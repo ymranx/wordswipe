@@ -19,16 +19,24 @@ export default {
             mouseDown = true;
             //$(this).index(".grid-letter")
             p1 = $(this).position();
-            console.log();
-        });
-        $(".app-grid").on("mouseup", ".grid-letter", function (ev) {
-            mouseDown = false;
-            p2 = $(this).position();
-            line = paper.line(p1.left + 7, p1.top + 7, p2.left + 7, p2.top + 7);
+            line = paper.line(p1.left + 12, p1.top + 12, p1.left + 12, p1.top + 12);
             line.attr({
                 class: "line-1"
             });
-            console.log($(this).index(".grid-letter"));
+        });
+        $(".app-grid").on("mouseenter", ".grid-letter", function (ev) {
+            if (mouseDown) {
+                p2 = $(this).position();
+                line.attr({
+                    x2: p2.left + 12,
+                    y2: p2.top + 12
+                });
+            }
+        })
+        $(".app-grid").on("mouseup", ".grid-letter", function (ev) {
+            mouseDown = false;
+            let idx = $(this).index(".grid-letter"); 
+            console.log(Math.floor(idx / 15) + "," + ((idx % 15) ));
         })
     },
     methods: {
