@@ -51,6 +51,7 @@ body {
     box-sizing: border-box;
     padding: 5px;
     background-color: #fff;
+    position: relative;
     .grid-letter {
         list-style-type: none;
         display: inline-block;
@@ -63,6 +64,19 @@ body {
         color: @grey-color;
         .text-shadow();
         cursor: pointer;
+    }
+}
+#appIllustrations {
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+    .line-1 {
+        stroke-linecap: round;
+        stroke-width: 20;
+        stroke-opacity: 0.5;
+        stroke: #C3F1FE;
     }
 }
 .app-words {
