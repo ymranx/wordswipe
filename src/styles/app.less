@@ -2,11 +2,62 @@
 
 body {
     font-family: sans-serif;
-    background: linear-gradient(to right, #00c6ff, #0072ff); 
+    background: linear-gradient(to right, #f1f1f1, #ffffff); 
 }
 #main {
 
 }
 .app-screen {
-
+    min-height: 400px;
+    max-width: 600px;
+    min-width: 340px;
+    width: 40%;
+    margin: 5px auto;
+   // background: linear-gradient(to right, #00c6ff, #0072ff);
  }
+
+ .app-title {
+     text-align: center;
+     font-size: @font-xs + 2;
+     padding: 5px;
+     background-color: #95b2bc;
+     color: #fff;
+ }
+ .app-header {
+    height: 100px;
+    background: linear-gradient(to bottom, #C3F1FE, #5FA6FF);
+    &:before {
+            content: '';
+            display: block;
+            height: 100%;
+            width: 100%;
+            background-image: url(/static/pexels-photo.png);
+            background-size: 35%;
+            background-position-y: 100%;
+            background-repeat:  repeat-x;
+            background-color: #444444;
+            opacity: 0.35;
+            background-blend-mode: difference;
+        }
+
+}
+
+.app-grid {
+    width: 100%;
+    min-height: 100px;
+    box-sizing: border-box;
+    padding: 5px;
+    background-color: #fff;
+    .grid-letter {
+        list-style-type: none;
+        display: inline-block;
+        font-size: @font-xs;
+        user-select: none;
+        width: 6.6%;
+        text-align: center;
+        box-sizing: border-box;
+        padding: 8px 10px;
+        color: #888;
+        cursor: pointer;
+    }
+}
