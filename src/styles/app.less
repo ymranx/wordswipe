@@ -7,11 +7,14 @@ body {
 #main {
 
 }
+.list {
+    list-style-type: none;
+}
 .app-screen {
     min-height: 400px;
-    max-width: 600px;
-    min-width: 340px;
-    width: 40%;
+    max-width: 420px;
+    min-width: 320px;
+    width: 30%;
     margin: 5px auto;
    // background: linear-gradient(to right, #00c6ff, #0072ff);
  }
@@ -56,8 +59,49 @@ body {
         width: 6.6%;
         text-align: center;
         box-sizing: border-box;
-        padding: 8px 10px;
-        color: #888;
+        padding: 5px 10px;
+        color: @grey-color;
+        .text-shadow();
         cursor: pointer;
     }
+}
+.app-words {
+    padding: 10px 15px;
+    margin: 0;
+    text-align: center;
+    li {
+        display: inline-block;
+        min-width: 70px;
+        text-align: center;
+        font-size: @font-xs + 1;
+        margin: 5px 10px;
+        color: @grey-color;
+        .text-shadow();
+        &.done {
+            color: #64B5F6;
+            text-decoration: line-through;
+        }
+    }
+}
+.btn-list {
+    height: 30px;
+    padding: 10px 20px;
+    text-align: center;
+}
+.ghost-btn {
+    padding: 10px 20px;
+    background: #f5bccf;
+    border: none;
+    color: #fff;
+    text-transform: uppercase;
+    border-radius: 2px;
+    font-weight: bold;
+    margin: 0 15px;
+    .text-shadow();
+}
+.pull-left {
+    float: left;
+}
+.pull-right {
+    float: right;
 }

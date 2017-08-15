@@ -4,7 +4,8 @@ export default {
         return {
             data: null,
             letters: `ABCDEFGHIJKLMNOPQRSTUVWXYZABCDABCDEFGHIJKLMNOPQRSTUVWXYZEFGHIFGHIJKLMNOPQRSTUVWXYZNOABCDEFGHIJKLMNOPABCDEFGHIJKLMNOPQRSTUVWXYZQRSTUVWXYZPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTABCDEFGHIJKLMNOPQRSTUVWXYZUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ`,
-            words: ['Bananna', 'Apple']
+            words: ['Aardvark', 'Antelope', 'Donkey', 'Bear', 'Capybara',
+                    'Bison', 'Crow', 'Falcon', 'Elephant', 'Goose']
         }       
     },
     mounted: function () {
