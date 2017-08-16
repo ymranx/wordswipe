@@ -1,13 +1,14 @@
 import Utility from './utility'
 
 let mouseDown = false;
+let puzzle;
 
 export default {
-    props: ['words'],
 
     data: function () {
         return {
             letters: `ABCDEFGHIJKLMNOPQRSTUVWXYZABCDABCDEFGHIJKLMNOPQRSTUVWXYZEFGHIFGHIJKLMNOPQRSTUVWXYZNOABCDEFGHIJKLMNOPABCDEFGHIJKLMNOPQRSTUVWXYZQRSTUVWXYZPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTABCDEFGHIJKLMNOPQRSTUVWXYZUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ`,
+            words: [],
             selword: ''
         }
     },
@@ -55,10 +56,31 @@ export default {
                 y: Math.floor(idx / 15),
                 x: ((idx % 15))
             }
-            console.log(lp1, lp2);
+            let selWord = _this.getSelectedWord(Utility.lettersBetween(lp1.x, lp1.y, lp2.x, lp2.y));
+            if (_this.words.indexOf(selWord) == -1) {
+                $(line.node).fadeOut("slow", function () {
+                    $(this).remove();
+                });
+            }
         })
     },
     methods: {
+        initPuzzle(words) {
+            this.words = words;
+
+            puzzle = wordfind.newPuzzle(words, {
+                height: 15,
+                width: 15,
+                orientations: ['horizontal', 'vertical', 'diagonal'],
+                fillBlanks: true,
+                preferOverlap: false
+            });
+            var lttrs = "";
+            puzzle.forEach((row) => {
+                lttrs += row.join("");
+            });
+            this.letters = lttrs;
+        },
         getSelectedWord(data) {
             let word = "";
             data.indices.forEach((idx) => {

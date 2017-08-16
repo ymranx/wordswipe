@@ -2,7 +2,7 @@
   <div class="app-screen">
     <section class="app-title"> Wordswipe</section>
     <section class="app-header"> </section>
-    <grid :words="words"> </grid>
+    <grid ref="appGrid"> </grid>
     <ul class="app-words list">
       <li v-for="word in words" class="grid-word"> {{word}}</li>
     </ul>

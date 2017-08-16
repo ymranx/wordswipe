@@ -1,4 +1,6 @@
 
+let gridController = null;
+
 export default {
     data: function () {
         return {
@@ -8,7 +10,8 @@ export default {
         }
     },
     mounted: function () {
-
+        gridController = this.$refs.appGrid;
+        gridController.initPuzzle(this.words);
     },
     methods: {
 
