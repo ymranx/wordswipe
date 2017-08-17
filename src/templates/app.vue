@@ -1,7 +1,9 @@
 <template>
   <div class="app-screen">
     <section class="app-title"> Wordswipe</section>
-    <section class="app-header"> </section>
+    <section class="app-header">
+      <score ref="appScore"> </score>
+     </section>
     <grid ref="appGrid" v-on:word-match="onWordMatch"> </grid>
     <ul class="app-words list">
       <li v-for="word in words" class="grid-word" :class="{'word-done': word.done}"> 
