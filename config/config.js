@@ -1,6 +1,7 @@
 
 export default {
     Services: {
-        server: ''
+        server: '',
+        wordlist: '/static/dictionary.json'
     }
 }

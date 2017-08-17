@@ -46,13 +46,11 @@ export default {
             for (x = x1; x <= x2; x++) {
                 y = y1 + dy * (x - x1) / dx;
                 indices.push(y * 15 + x);
-                //console.log({ x: x, y: y });
             }
         } else {
             for (y = y1; y <= y2; y++) {
                 x = x1 + dx * (y - y1) / dy;
                 indices.push(y * 15 + x);
-                //console.log({ x: x, y: y });
             }
         }
         return { indices: indices, reverse: rev };

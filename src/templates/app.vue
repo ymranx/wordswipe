@@ -2,9 +2,11 @@
   <div class="app-screen">
     <section class="app-title"> Wordswipe</section>
     <section class="app-header"> </section>
-    <grid ref="appGrid"> </grid>
+    <grid ref="appGrid" v-on:word-match="onWordMatch"> </grid>
     <ul class="app-words list">
-      <li v-for="word in words" class="grid-word"> {{word}}</li>
+      <li v-for="word in words" class="grid-word" :class="{'word-done': word.done}"> 
+        {{word.word}}
+      </li>
     </ul>
   
     <section class="btn-list">

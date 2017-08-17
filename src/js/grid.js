@@ -7,7 +7,7 @@ export default {
 
     data: function () {
         return {
-            letters: `ABCDEFGHIJKLMNOPQRSTUVWXYZABCDABCDEFGHIJKLMNOPQRSTUVWXYZEFGHIFGHIJKLMNOPQRSTUVWXYZNOABCDEFGHIJKLMNOPABCDEFGHIJKLMNOPQRSTUVWXYZQRSTUVWXYZPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTABCDEFGHIJKLMNOPQRSTUVWXYZUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ`,
+            letters: ``,
             words: [],
             selword: ''
         }
@@ -57,10 +57,14 @@ export default {
                 x: ((idx % 15))
             }
             let selWord = _this.getSelectedWord(Utility.lettersBetween(lp1.x, lp1.y, lp2.x, lp2.y));
-            if (_this.words.indexOf(selWord) == -1) {
+            let matchedIndex = _this.words.findIndex((word) => { return word.word == selWord });
+            
+            if (matchedIndex == -1) {
                 $(line.node).fadeOut("slow", function () {
                     $(this).remove();
                 });
+            } else {
+                _this.$emit("word-match", matchedIndex);
             }
         })
     },
@@ -68,7 +72,7 @@ export default {
         initPuzzle(words) {
             this.words = words;
 
-            puzzle = wordfind.newPuzzle(words, {
+            puzzle = wordfind.newPuzzle(this.words.map((word) => { return word.word }), {
                 height: 15,
                 width: 15,
                 orientations: ['horizontal', 'vertical', 'diagonal'],
