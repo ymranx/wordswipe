@@ -1,0 +1,27 @@
+@import "./variables.less";
+
+.app-players {
+    position: absolute;
+    width: 100%;
+    .app-player {
+        display: inline-block;
+        margin: 5px;
+        color: #fff;
+        opacity: 0.3;
+        transform: scale(0.7);
+        transition: 0.5s ease all;
+        &.active {
+            opacity: 0.8;
+            transform: scale(1);
+            color: #ef5350;
+            text-shadow: 1px 1px 10px rgba(255, 255, 255, 1);
+        }
+    }
+    text-align: center;
+    .icon {
+        font-size: @font-sm;
+    }
+    .text {
+        font-size: @font-xs - 2;
+    }
+}

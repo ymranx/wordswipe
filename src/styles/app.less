@@ -28,19 +28,21 @@ body {
  }
  .app-header {
     height: 100px;
+    position: relative;
     background: linear-gradient(to bottom, #C3F1FE, #5FA6FF);
     &:before {
             content: '';
+            position: absolute;
             display: block;
             height: 100%;
             width: 100%;
             background-image: url(/static/pexels-photo.png);
-            background-size: 35%;
+            background-size: 45%;
             background-position-y: 100%;
             background-repeat:  repeat-x;
             background-color: #444444;
             opacity: 0.35;
-            background-blend-mode: difference;
+            background-blend-mode: soft-light;
         }
 
 }
