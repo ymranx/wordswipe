@@ -10,6 +10,7 @@
     position: relative;
     .grid-letter {
         list-style-type: none;
+        transition: 0.3s ease all;
         display: inline-block;
         font-size: @font-xs;
         user-select: none;
@@ -20,6 +21,10 @@
         color: @grey-color;
         .text-shadow();
         cursor: pointer;
+
+        &:hover {
+            opacity: 0.6;
+        }
     }
 }
 #appIllustrations {
