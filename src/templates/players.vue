@@ -1,23 +1,12 @@
 <template>
   <section class="app-players">
-    <span class="app-player">
+    <span v-for="(player, idx) in players" :class="{active : (idx == current)}" class="app-player">
       <div>
         <i class="fa fa-male icon" aria-hidden="true"></i>
       </div>
-      <span class="text">player1 </span>
+      <span class="text">{{player.name}} </span>
     </span>
-    <span class="app-player active">
-      <div>
-        <i class="fa fa-male icon" aria-hidden="true"></i>
-      </div>
-      <span class="text">player2 </span>
-    </span>
-    <span class="app-player">
-      <div>
-        <i class="fa fa-male icon" aria-hidden="true"></i>
-      </div>
-      <span class="text">player3 </span>
-    </span>
+
   </section>
 </template>
 

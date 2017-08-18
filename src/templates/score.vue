@@ -2,7 +2,7 @@
   <section class="app-score">
     <span class="score-item">
       <div class="label">TIME</div>
-      <div class="text">1:59</div>
+      <div class="text">{{time}}</div>
     </span>
     <span class="score-item">
       <div class="label">SCORE</div>

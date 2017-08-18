@@ -14,7 +14,7 @@
   
     <section class="btn-list">
       <button class="ghost-btn "> New </button>
-      <button class="ghost-btn "> Pass </button>
+      <button class="ghost-btn " v-on:click="onPassClick"> Pass </button>
     </section>
   </div>
 </template>
