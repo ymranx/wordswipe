@@ -6,11 +6,11 @@
     </span>
     <span class="score-item">
       <div class="label">SCORE</div>
-      <div class="text">150</div>
+      <div class="text">{{score}}</div>
     </span>
     <span class="score-item">
       <div class="label">BEST</div>
-      <div class="text">250</div>
+      <div class="text">{{best}}</div>
     </span>
   </section>
 </template>

@@ -11,10 +11,7 @@ export default {
         }
     },
     mounted: function () {
-        this.startTimer();
-        setTimeout(() => {
-            this.stopTimer();
-        }, 2000);
+
     },
     methods: {
         startTimer: function () {
@@ -42,6 +39,7 @@ export default {
 
         setScore: function(llen) {
             this.score = llen;
+            this.best = Math.max(this.best, llen);
         }
         //Event handlers
     }

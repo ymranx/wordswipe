@@ -16,8 +16,13 @@ export default {
                 this.players.push({ name: 'player-' + (i + 1), score: 0 });
             }
         },
+
+        getCurrentPlayer: function() {
+            return (this.players[this.current]);
+        },
+
         nextPlayer: function () {
-            return(this.current = (this.current + 1) % 5);
+            return(this.current = (this.current + 1) % this.players.length);
         }
         //Event handlers
     }

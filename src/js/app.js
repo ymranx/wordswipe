@@ -27,11 +27,12 @@ export default {
     methods: {
         initGame: function () {
             this.prepareWords();
-            playerController.setPlayers(5);
+            playerController.setPlayers(3);
             gridController.initPuzzle(this.words);
+            scoreController.startTimer();
         },
-        
-        resetGame: function() {
+
+        resetGame: function () {
 
         },
         // Suffle the words from dictionary
@@ -44,14 +45,28 @@ export default {
                 })
             }
         },
+        passNextPlayer: function () {
+            let curPlayer;
+            playerController.nextPlayer();
+            curPlayer = playerController.getCurrentPlayer();
+            scoreController.resetTimer();
+            scoreController.setScore(curPlayer.score);
+        },
 
         //Event handlers
         onWordMatch: function (idx) {
-            this.words[idx].done = true;
+            let mword = this.words[idx];
+            let curPlayer = playerController.getCurrentPlayer();
+            mword.done = true;
+            scoreController.setScore(curPlayer.score + mword.word.length * 10);
+            curPlayer.score += mword.word.length * 10;
+            setTimeout(() => {
+                this.passNextPlayer();
+            }, 1000);
         },
 
-        onPassClick: function() {
-            console.log(playerController.nextPlayer());
+        onPassClick: function () {
+            this.passNextPlayer();
         }
     }
 }
