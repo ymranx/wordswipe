@@ -1,5 +1,33 @@
 @import "./variables.less";
 
 .app-score {
-    
+    position: absolute;
+    width: 100%;
+    margin-top: 55px; 
+    text-align: center;
+    .score-item {
+        text-align: center;
+        position: relative;
+        display: inline-block;
+        margin-right: 35px;
+        &:not(:last-child):after {
+            content: '';
+            position: absolute;
+            height: 90%;
+            top: 5px;
+            left: 140%;
+            border-right: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        .label {
+            font-size: @font-xs - 1;
+            color: #f1c40f;
+        }
+        .text {
+            font-size: @font-lg;
+            font-weight: bold;
+            color: #fff;
+            opacity: 0.8;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+        }
+    }
 }
