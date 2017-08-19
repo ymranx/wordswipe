@@ -11,6 +11,9 @@ export default {
     data: function () {
         return {
             selword: '',
+            selPlayer: 2,
+            gameOn: false,
+            gameMsg: '',
             words: []
         }
     },
@@ -21,19 +24,22 @@ export default {
 
         $.get(Config.Services.wordlist).then((res) => {
             wordBase = res;
-            this.initGame();
         })
     },
     methods: {
         initGame: function () {
+            this.gameOn = true;
             this.prepareWords();
-            playerController.setPlayers(3);
+            playerController.setPlayers(this.selPlayer);
             gridController.initPuzzle(this.words);
             scoreController.startTimer();
         },
 
         resetGame: function () {
-
+            this.gameOn = false;
+            gridController.reset();
+            playerController.reset();
+            scoreController.reset();
         },
         // Suffle the words from dictionary
         prepareWords: function () {
@@ -47,7 +53,7 @@ export default {
         },
         passNextPlayer: function () {
             let curPlayer;
-            playerController.nextPlayer();
+            let Plno = playerController.nextPlayer();
             curPlayer = playerController.getCurrentPlayer();
             scoreController.resetTimer();
             scoreController.setScore(curPlayer.score);
@@ -65,8 +71,20 @@ export default {
             }, 1000);
         },
 
+        onNewGame: function() {
+            this.resetGame();
+        },
+        
         onPassClick: function () {
             this.passNextPlayer();
+        },
+
+        onPlayerSelect: function(pcount, ev) {
+            this.selPlayer = pcount;
+        },
+
+        onGameStart: function() {
+            this.initGame();
         }
     }
 }

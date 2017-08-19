@@ -33,8 +33,20 @@ export default {
             ss = mm = 0;
         },
 
+        reset: function() {
+            this.time = '00:00';
+            this.score = 0;
+            this.best = 0;
+            this.stopTimer();
+            this.resetTimer();
+        },
+
         getTimer: function () {
             return ({ mm: mm, ss: ss });
+        },
+
+        getScore: function() {
+            return ({score:this.score, best: this.best});
         },
 
         setScore: function(llen) {

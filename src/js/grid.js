@@ -91,6 +91,10 @@ export default {
                 word += this.letters[idx]
             })
             return word;
+        },
+
+        reset() {
+            $('#appIllustrations line').remove();
         }
     }
 }

@@ -4,13 +4,13 @@ body {
     font-family: sans-serif;
     background: linear-gradient(to right, #f1f1f1, #efefef); 
 }
-#main {
-
+.viewport {
+    position: relative;
 }
 .list {
     list-style-type: none;
 }
-.app-screen {
+.app-screen, .init-screen {
     min-height: 400px;
     max-width: 420px;
     min-width: 320px;
@@ -18,7 +18,14 @@ body {
     margin: 5px auto;
    // background: linear-gradient(to right, #00c6ff, #0072ff);
  }
-
+.init-screen {
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-block;
+    background-color: rgb(255, 255, 255);
+}
  .app-title {
      text-align: center;
      font-size: @font-xs + 2;
@@ -87,4 +94,46 @@ body {
 }
 .pull-right {
     float: right;
+}
+
+.game-logo {
+    width: 200px;
+    height: 55px;
+    margin: 30px auto;
+    background-image: url(/static/logo.png);
+    background-size: 100%;
+}
+.player-sel {
+    text-align: center;
+    .label {
+        font-size: @font-xs + 2;
+        color: #ade6e6;
+        text-transform: uppercase;
+    }
+    .sel-btn {
+        display: inline-block;
+        height: 20px;
+        width: 20px;
+        padding: 5px;
+        line-height: 22px;
+        color: #ADE6E6;
+        margin: 10px;
+        border: 2px solid #d7f7f7;
+        border-radius: 6px;
+        cursor: pointer;
+        &.active {
+            color: #f5bccf;
+            border-color:#f5bccf; 
+        }
+    }
+}
+.game-buttons {
+    text-align: center;
+    margin-top: 80px;
+}
+.msg-disp {
+    text-align: center;
+    color: #dcdcdc;
+    font-size: 22px;
+    margin-bottom: 25px;
 }

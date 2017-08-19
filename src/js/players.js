@@ -23,6 +23,11 @@ export default {
 
         nextPlayer: function () {
             return(this.current = (this.current + 1) % this.players.length);
+        },
+
+        reset: function() {
+            this.players = [];
+            this.current = 0;
         }
         //Event handlers
     }
