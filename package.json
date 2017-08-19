@@ -14,6 +14,7 @@
   "author": "Imran Laskar",
   "license": "MIT",
   "dependencies": {
+    "grapnel": "^0.6.4",
     "vue": "^2.4.2"
   },
   "devDependencies": {

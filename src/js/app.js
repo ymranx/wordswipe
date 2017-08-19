@@ -1,4 +1,7 @@
 import Config from '../../config/config'
+import Grapnel from 'grapnel'
+
+let Router = new Grapnel();
 let gridController = null;
 let playerController = null;
 let scoreController = null;
@@ -19,13 +22,28 @@ export default {
         }
     },
     mounted: function () {
+        let _this = this;
         gridController = this.$refs.appGrid;
         playerController = this.$refs.appPlayers;
         scoreController = this.$refs.appScore;
 
         $.get(Config.Services.wordlist).then((res) => {
             wordBase = res;
-        })
+        });
+
+        Router.get("", function (req) {
+            _this.resetGame();
+        });
+        Router.get("start", function (req) {
+            try {
+                _this.initGame();
+            } catch (ex) {
+                Router.navigate("");
+            }
+        });
+        Router.get("finish", function (req) {
+            _this.resetGame();
+        });
     },
     methods: {
         initGame: function () {
@@ -38,7 +56,7 @@ export default {
 
         resetGame: function () {
             this.gameOn = false;
-           // this.gameMsg = "";
+            // this.gameMsg = "";
             userGaveup = 0;
             wordsFound = 0;
             gridController.reset();
@@ -57,15 +75,15 @@ export default {
         },
         passNextPlayer: function () {
             let curPlayer;
-            if(userGaveup >= this.selPlayer) {
+            if (userGaveup >= this.selPlayer) {
                 this.gameMsg = "Game Over";
-                this.resetGame();
+                Router.navigate("finish");
                 return;
             }
-            if(wordsFound >= totalWords) {
+            if (wordsFound >= totalWords) {
                 let winner = playerController.getWinner();
                 this.gameMsg = winner.name + " won";
-                this.resetGame();
+                Router.navigate("finish");
                 return;
             }
             playerController.nextPlayer();
@@ -89,21 +107,21 @@ export default {
             }, 1000);
         },
 
-        onNewGame: function() {
-            this.resetGame();
+        onNewGame: function () {
+            Router.navigate("");
         },
-        
+
         onPassClick: function () {
             userGaveup++;
             this.passNextPlayer();
         },
 
-        onPlayerSelect: function(pcount, ev) {
+        onPlayerSelect: function (pcount, ev) {
             this.selPlayer = pcount;
         },
 
-        onGameStart: function() {
-            this.initGame();
+        onGameStart: function () {
+            Router.navigate("start");
         }
     }
 }
