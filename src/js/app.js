@@ -5,6 +5,7 @@ let scoreController = null;
 
 let wordBase = [];
 let wordsFound = 0;
+let userGaveup = 0;
 let totalWords = 10;
 
 export default {
@@ -37,6 +38,8 @@ export default {
 
         resetGame: function () {
             this.gameOn = false;
+            userGaveup = 0;
+            wordsFound = 0;
             gridController.reset();
             playerController.reset();
             scoreController.reset();
@@ -53,7 +56,12 @@ export default {
         },
         passNextPlayer: function () {
             let curPlayer;
-            let Plno = playerController.nextPlayer();
+            if(userGaveup >= this.selPlayer) {
+                this.gameMsg = "Game Over";
+                this.resetGame();
+                return;
+            }
+            playerController.nextPlayer();
             curPlayer = playerController.getCurrentPlayer();
             scoreController.resetTimer();
             scoreController.setScore(curPlayer.score);
@@ -66,6 +74,7 @@ export default {
             mword.done = true;
             scoreController.setScore(curPlayer.score + mword.word.length * 10);
             curPlayer.score += mword.word.length * 10;
+            userGaveup = 0;
             setTimeout(() => {
                 this.passNextPlayer();
             }, 1000);
@@ -76,6 +85,7 @@ export default {
         },
         
         onPassClick: function () {
+            userGaveup++;
             this.passNextPlayer();
         },
 
