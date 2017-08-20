@@ -59,7 +59,9 @@ export default {
                 x: ((idx % 15))
             }
             let selWord = _this.getSelectedWord(Utility.lettersBetween(lp1.x, lp1.y, lp2.x, lp2.y));
-            let matchedIndex = _this.words.findIndex((word) => { return word.word == selWord });
+            let matchedIndex = _this.words.findIndex((word) => {
+                 return (!word.done && (word.word == selWord))
+             });
             
             if (matchedIndex == -1) {
                 $(line.node).fadeOut("slow", function () {
