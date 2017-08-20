@@ -32,6 +32,7 @@ export default {
         });
 
         Router.get("", function (req) {
+            _this.gameMsg = "New Game";
             _this.resetGame();
         });
         Router.get("start", function (req) {

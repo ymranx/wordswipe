@@ -11,6 +11,7 @@ let isValidPlacement = {
     'D': (x, y, wl) => ((x + wl <= gwidth) && (y + wl <= gheight)),
 }
 let grid = [];
+let lfills = 'abcdefghijklmnopqrstuvwxyz';
 
 export default {
     generatePuzzle: function (words, height, width) {
@@ -18,20 +19,20 @@ export default {
         gheight = height;
         gwidth = width;
         let flag = true;
-        for(let i=0; i<height; i++) {
+        for (let i = 0; i < height; i++) {
             grid.push([]);
-            for(let j=0; j<width; j++) {
+            for (let j = 0; j < width; j++) {
                 grid[i].push("");
             }
         }
         words.forEach((word) => {
             let wl = word.length;
             let validCells = this.getValidCells(word);
-            let choiceCell = validCells[0];
+            let choiceCell = validCells[Math.floor(Math.random() * validCells.length)];
             if (validCells.length > 0) {
                 for (let i = 0; i < word.length; i++) {
                     let curCell = choiceCell.layout(choiceCell.cell[0], choiceCell.cell[1], i);
-                    grid[curCell[0], curCell[1]] = word[i];
+                    grid[curCell[0]][curCell[1]] = word[i];
                 }
             } else {
                 flag = false;
@@ -39,7 +40,8 @@ export default {
             }
 
         });
-        if(flag) {
+        if (flag) {
+            this.polyfillGrid();
             return grid;
         }
         return null;
@@ -54,11 +56,12 @@ export default {
             let x = 0, y = 0;
             while (y < gheight) {
                 if (checkLayout(x, y, word.length)) {
-                    validCells.push({
-                        cell: [x, y],
-                        layout: nextCell
-                    });
-
+                    if (!this.haveCollision(x, y, word.length, nextCell)) {
+                        validCells.push({
+                            cell: [x, y],
+                            layout: nextCell
+                        });
+                    }
                 }
                 if (++x >= gwidth) {
                     y++;
@@ -68,5 +71,25 @@ export default {
         });
 
         return validCells;
+    },
+
+    haveCollision: function (x, y, wl, layoutFn) {
+        for (let i = 0; i < wl; i++) {
+            let curCell = layoutFn(x, y, i);
+            if (grid[curCell[0]][curCell[1]] != "") {
+                return true;
+            }
+        }
+        return false;
+    },
+
+    polyfillGrid: function() {
+        for(let x=0; x<gwidth; x++) {
+            for(let y=0; y<gheight; y++) {
+                if(grid[x][y] == "") {
+                    grid[x][y] = lfills[Math.floor(Math.random() * lfills.length)];
+                }
+            }
+        }
     }
 }
