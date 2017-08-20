@@ -46,7 +46,7 @@ export default {
         }
         return null;
     },
-
+    // get list of cells where current word can be fit
     getValidCells: function (word) {
         let validCells = [];
         let checkLayout;
@@ -73,7 +73,7 @@ export default {
 
         return validCells;
     },
-
+// Detect if current letter is colliding with other letter in cell
     haveCollision: function (x, y, wl, layoutFn) {
         for (let i = 0; i < wl; i++) {
             let curCell = layoutFn(x, y, i);
@@ -83,7 +83,7 @@ export default {
         }
         return false;
     },
-
+// Fill random letters in empty cells
     polyfillGrid: function () {
         for (let x = 0; x < gwidth; x++) {
             for (let y = 0; y < gheight; y++) {

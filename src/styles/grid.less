@@ -9,6 +9,7 @@
     background-color: #fff;
     position: relative;
     .grid-letter {
+        position: relative;
         list-style-type: none;
         transition: 0.3s ease all;
         display: inline-block;
@@ -19,10 +20,17 @@
         box-sizing: border-box;
         padding: 5px 10px;
         color: @grey-color;
-        //text-transform: uppercase;
+        text-transform: uppercase;
         .text-shadow();
         cursor: pointer;
-
+        // &:before {
+        //     content: '';
+        //     display: inline-block;
+        //     position: absolute;
+        //     height: 100%;
+        //     left: 100%;
+        //     border-right: 1px solid #eee;
+        // }
         &:hover {
             opacity: 0.6;
         }

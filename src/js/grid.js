@@ -68,6 +68,14 @@ export default {
                 _this.$emit("word-match", matchedIndex);
             }
         })
+
+        $(".viewport").mouseup(function(ev) {
+            if(mouseDown) {
+                $(line.node).fadeOut("slow", function () {
+                    $(this).remove();
+                });
+            }
+        });
     },
     methods: {
         initPuzzle(words) {
