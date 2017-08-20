@@ -46,6 +46,7 @@ export default {
         }
         return null;
     },
+
     getValidCells: function (word) {
         let validCells = [];
         let checkLayout;
@@ -83,10 +84,10 @@ export default {
         return false;
     },
 
-    polyfillGrid: function() {
-        for(let x=0; x<gwidth; x++) {
-            for(let y=0; y<gheight; y++) {
-                if(grid[x][y] == "") {
+    polyfillGrid: function () {
+        for (let x = 0; x < gwidth; x++) {
+            for (let y = 0; y < gheight; y++) {
+                if (grid[x][y] == "") {
                     grid[x][y] = lfills[Math.floor(Math.random() * lfills.length)];
                 }
             }

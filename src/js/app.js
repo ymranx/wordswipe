@@ -70,7 +70,7 @@ export default {
             this.words = [];
             for (let i = 0; i < 10; i++) {
                 this.words.push({
-                    word: wordBase[parseInt(Math.random() * wordBase.length)],
+                    word: wordBase[Math.floor(Math.random() * wordBase.length)],
                     done: false
                 })
             }
