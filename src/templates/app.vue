@@ -1,12 +1,14 @@
 <template>
   <div class="viewport">
     <div class="app-screen" v-show="gameOn">
-      <section class="app-title"></section>
       <section class="app-header">
         <players ref="appPlayers"> </players>
         <score ref="appScore"> </score>
       </section>
-      <grid ref="appGrid" v-on:word-match="onWordMatch"> </grid>
+      <section class="app-title">{{selword}}</section>
+      <grid ref="appGrid" v-on:word-match="onWordMatch"
+                          v-on:word-select="onWordSelect">
+      </grid>
       <ul class="app-words list">
         <li v-for="word in words" class="grid-word" :class="{'word-done': word.done}">
           {{word.word}}

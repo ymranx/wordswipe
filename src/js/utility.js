@@ -15,11 +15,11 @@ export default {
         let validAngles = {
             "45": 1,
             "90": 1,
-            "135": 1,
-            "180": 1,
+            //"135": 1,
+           // "180": 1,
             "0": 1
         };
-        if (Math.abs(angle) in validAngles) {
+        if (angle in validAngles) {
             flag = true;
         }
         return flag;

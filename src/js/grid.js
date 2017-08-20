@@ -45,7 +45,8 @@ export default {
                         x2: p2.left + 12,
                         y2: p2.top + 12
                     });
-                    _this.getSelectedWord(Utility.lettersBetween(lp1.x, lp1.y, cp2.x, cp2.y));
+                    let selWord = _this.getSelectedWord(Utility.lettersBetween(lp1.x, lp1.y, cp2.x, cp2.y));
+                    _this.$emit("word-select", selWord);
                 }
 
             }
@@ -67,6 +68,7 @@ export default {
             } else {
                 _this.$emit("word-match", matchedIndex);
             }
+            _this.$emit("word-select", "");
         })
 
         $(".viewport").mouseup(function(ev) {
@@ -74,6 +76,7 @@ export default {
                 $(line.node).fadeOut("slow", function () {
                     $(this).remove();
                 });
+                _this.$emit("word-select", "");
             }
         });
     },

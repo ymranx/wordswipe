@@ -109,6 +109,10 @@ export default {
             }, 1000);
         },
 
+        onWordSelect: function(selWord) {
+            this.selword = selWord;
+        },
+
         onNewGame: function () {
             Router.navigate("");
         },
