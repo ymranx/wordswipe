@@ -25,6 +25,10 @@ $ npm run devbuild;
 ```
 built files are exported to 'dist' folder
 
+### Demo
+
+https://ymranx.github.io/wordswipe.html
+
 
 License
 ----
