@@ -1,4 +1,5 @@
 import Utility from './utility'
+import Puzzler from './puzzler'
 
 let mouseDown = false;
 let puzzle;
@@ -71,14 +72,7 @@ export default {
     methods: {
         initPuzzle(words) {
             this.words = words;
-
-            puzzle = wordfind.newPuzzle(this.words.map((word) => { return word.word }), {
-                height: 15,
-                width: 15,
-                orientations: ['horizontal', 'vertical', 'diagonal'],
-                fillBlanks: true,
-                preferOverlap: false
-            });
+            puzzle = Puzzler.generatePuzzle(this.words.map((word) => { return word.word }), 15, 15);
             var lttrs = "";
             puzzle.forEach((row) => {
                 lttrs += row.join("");

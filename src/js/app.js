@@ -6,16 +6,16 @@ let gridController = null;
 let playerController = null;
 let scoreController = null;
 
-let wordBase = [];
-let wordsFound = 0;
-let userGaveup = 0;
-let totalWords = 10;
+let wordBase = []; // Dictionary
+let wordsFound = 0; // No. of words found from the grid
+let userGaveup = 0; // No. of users gave up subsequently
+let totalWords = 10; // No. of wors loaded into the grid
 
 export default {
     data: function () {
         return {
             selword: '',
-            selPlayer: 2,
+            selPlayer: 2, // Default 2 players game
             gameOn: false,
             gameMsg: '',
             words: []
@@ -44,6 +44,7 @@ export default {
         Router.get("finish", function (req) {
             _this.resetGame();
         });
+        
     },
     methods: {
         initGame: function () {
